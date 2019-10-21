@@ -1,0 +1,6 @@
+# Registering an object in space through the name
+string name
+geometry_msgs/PoseStamped pose 
+---
+bool success
+string status

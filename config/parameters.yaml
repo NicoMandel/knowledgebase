@@ -1,0 +1,27 @@
+# Config file of parameters for the knowledgebase
+# use this format: https://roboticsbackend.com/ros-param-yaml-format/
+
+count_col_name: "count"
+detection:
+  marker_detect_thresh: 0.6
+  service_timeout: 1
+  service_frequency: 5
+
+map_server:
+  mean: 0.337594432877622
+  stddev: 0.0605687832612647
+  rmax: 12
+  pt_threshold: 10
+  ang_bins: 18
+
+tf_server:
+  distance_threshold: 0.8
+
+cam_tf:
+  detection_threshold: 1.8
+  no_of_pts: 50
+  pts_frame: "base_link"
+
+navigator:
+  distance_threshold: 1.0
+  const_height: 1.5

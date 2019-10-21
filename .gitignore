@@ -1,0 +1,27 @@
+**/__pycac*/
+**/.vscode/
+
+# configs
+/config/**
+!/config/param*.yaml
+!/config/Initial_WP*
+!/config/person_targ*
+
+# src
+/src/**
+!/src/word2vec_*
+!/src/surveill*
+!/src/utils.py
+
+# srv
+/srv/**
+!/srv/Register*
+
+# msgs
+/msg/**
+# !/msg/Array*
+!/msg/Object.msg
+!/msg/Dataframe*
+!/msg/Point2D.msg
+!/msg/*Array*
+
