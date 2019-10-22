@@ -1,7 +1,7 @@
 # Knowledge Server package
 
 This package is sought to implement the work as written in some documentation. It is the ROS-implementation of the [numerical simulation](https://github.com/NicoMandel/Numerical-Sim-Semantic)
-This package co-exists with the [aruco_client]() package
+This package co-exists with the [aruco_client](https://github.com/NicoMandel/aruco_client) package
 
 ## Dependencies
 * The [ml_detector package](https://github.com/qutas/marker_localization) from qutas github
