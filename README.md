@@ -8,6 +8,7 @@ This package co-exists with the [aruco_client](https://github.com/NicoMandel/aru
 * Px4 Firmware
 * A proprietary camera model for the UAV to use (not included)
 * Numpy and Pandas
+* A fast-text word vector file (too large to include). Should be named according to [this line](https://github.com/NicoMandel/knowledgebase/blob/master/src/word2vec_mapping.py#L32), placed in the `config` folder and can be downloaded from [here](https://fasttext.cc/docs/en/english-vectors.html) approx. 600 MB download. 
 
 ## Known issues
 * it has been attempted to move `cv_bridge` dependencies away from this package, and into the aruco_client. These 2 packages co-exist
