@@ -9,8 +9,11 @@
 
 # src
 /src/**
-!/src/word2vec_*
+!/src/word2vec_detection_*.py
 !/src/surveill*
+!/src/register_*_reduced.py
+!/src/cam_points_*
+!/src/gazebo_*
 !/src/utils.py
 
 # srv
