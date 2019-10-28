@@ -4,7 +4,7 @@ This package is sought to implement the work as written in some documentation. I
 This package co-exists with the [aruco_client](https://github.com/NicoMandel/aruco_client) package
 
 ## Dependencies
-* The [ml_detector package](https://github.com/qutas/marker_localization) from qutas github
+* The [modified ml_detector package](https://github.com/NicoMandel/marker_localization) cloned from qutas github
 * Px4 Firmware
 * A proprietary camera model for the UAV to use (not included)
 * Numpy and Pandas
