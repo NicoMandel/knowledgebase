@@ -11,11 +11,12 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-  message_generation
+  # message_generation
   geometry_msgs
   tf
   tf2_ros
   sensor_msgs
+  knowledge_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -52,33 +53,33 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  Object.msg
-  KnownObjects.msg
-  Point2D.msg
-  Point2DStamped.msg
-  PointArray.msg
-  PathNode.msg
-  Array.msg
-  Dataframe.msg
-  ObjectLocation.msg
-  ObjectLocationList.msg
-)
+# add_message_files(
+#   FILES
+#   Object.msg
+#   KnownObjects.msg
+#   Point2D.msg
+#   Point2DStamped.msg
+#   PointArray.msg
+#   PathNode.msg
+#   Array.msg
+#   Dataframe.msg
+#   ObjectLocation.msg
+#   ObjectLocationList.msg
+# )
 
 ## Generate services in the 'srv' folder
-add_service_files(
-  FILES
-  GetName.srv
-  RegisterObject.srv
-  GetDistance.srv
-  GetHolonyms.srv
-  GetLowestHyper.srv
-  GetMeronyms.srv
-  GetConnecting.srv
-  GetLexname.srv
-  GetIDs.srv
-)
+# add_service_files(
+#   FILES
+#   GetName.srv
+#   RegisterObject.srv
+#   GetDistance.srv
+#   GetHolonyms.srv
+#   GetLowestHyper.srv
+#   GetMeronyms.srv
+#   GetConnecting.srv
+#   GetLexname.srv
+#   GetIDs.srv
+# )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -88,11 +89,11 @@ add_service_files(
 # )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  geometry_msgs
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+#   geometry_msgs
+# )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -126,7 +127,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES knowledge_server
- CATKIN_DEPENDS roscpp rospy std_msgs message_runtime geometry_msgs
+ CATKIN_DEPENDS roscpp rospy std_msgs geometry_msgs knowledge_msgs
 #  DEPENDS system_lib
 )
 
