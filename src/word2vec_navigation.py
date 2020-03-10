@@ -231,7 +231,7 @@ if __name__=="__main__":
     for i in range(15):
         rate.sleep()
 
-    service_dict = {'MPC_JERK_MIN':0.0,
+    service_dict = {
                 'MPC_JERK_MAX':0.5,
                 'MPC_ACC_HOR':0.5,      # This is the important parameter!
                 'MPC_XY_P':0.15,
