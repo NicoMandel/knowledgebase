@@ -6,7 +6,7 @@ import numpy as np
 import math
 import tf2_ros
 import tf2_geometry_msgs
-from knowledge_server.msg import Point2D, PointArray
+from knowledge_msgs.msg import Point2D, PointArray
 from geometry_msgs.msg import PointStamped
 from sensor_msgs.msg import CameraInfo
 

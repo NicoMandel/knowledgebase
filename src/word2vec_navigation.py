@@ -1,7 +1,7 @@
 #!/usr/bin/env python2
 
 from mavros_msgs.srv import ParamSetRequest, ParamSet, ParamSetResponse
-from knowledge_server.msg import Array
+from knowledge_msgs.msg import Array
 from pymavlink import mavutil
 from geometry_msgs.msg import PoseStamped, Quaternion
 import rospy

@@ -13,7 +13,7 @@ import numpy as np
 import rospy
 import rospkg
 from knowledge_server.srv import RegisterObject, RegisterObjectRequest, RegisterObjectResponse
-from knowledge_server.msg import Object, Dataframe
+from knowledge_msgs.msg import Object, Dataframe
 from tf.transformations import quaternion_from_euler 
 import tf2_ros
 from tf2_ros import LookupException as lookE, ConnectivityException as ConnE, ExtrapolationException as ExE
