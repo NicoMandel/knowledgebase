@@ -172,8 +172,6 @@ class Word2Vec_Mapping:
 
     
     
-
-
 if __name__=="__main__":
     rospy.init_node("map_server")
     wvc = Word2Vec_Mapping()

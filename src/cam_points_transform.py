@@ -137,14 +137,15 @@ class CameraTransformVertical:
     https://photo.stackexchange.com/questions/56596/how-do-i-calculate-the-ground-footprint-of-an-aerial-camera"""
 
     # A camera transform class for the case of a bottom-facing camera
-    def __init__(self, timeout=5):
+    def __init__(self, timeout=None):
         """ A constructor for the bottom facing camera """
 
         self.detection_distance = rospy.get_param('~detection_threshold', default=1.8)
         self.no_of_pts = rospy.get_param('~no_of_pts', default=50)
         self.pts_frame = rospy.get_param('~pts_frame', default='base_link')
         # Camera Stuff here
-        msg = rospy.wait_for_message("/iris_bottom_cam/usb_cam/camera_info", CameraInfo, timeout=timeout)
+        vehicle_name = rospy.get_param("/vehicle_name",default="iris")
+        msg = rospy.wait_for_message("/{}/usb_cam/camera_info".format(vehicle_name), CameraInfo, timeout=timeout)
         img_height = msg.height
         img_width = msg.width
         self.focal_length = msg.K[0]        # vertical and horizontal fov are mostly the same
