@@ -10,7 +10,7 @@ from geometry_msgs.msg import PoseStamped
 from ml_msgs.msg import MarkerDetection
 from utils import cosine_sim, calc_distance, load_vectors
 from knowledge_msgs.msg import Dataframe 
-from knowledge_server.srv import RegisterObject, RegisterObjectRequest, RegisterObjectResponse
+from knowledge_msgs.srv import RegisterObject, RegisterObjectRequest, RegisterObjectResponse
 
 class Word2Vec_Detection:
     """ A class which serves as the detection of targets and registering objects"""
