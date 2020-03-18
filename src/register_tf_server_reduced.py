@@ -12,7 +12,7 @@ import pandas as pd
 import numpy as np
 import rospy
 import rospkg
-from knowledge_server.srv import RegisterObject, RegisterObjectRequest, RegisterObjectResponse
+from knowledge_msgs.srv import RegisterObject, RegisterObjectRequest, RegisterObjectResponse
 from knowledge_msgs.msg import Object, Dataframe
 from tf.transformations import quaternion_from_euler 
 import tf2_ros
