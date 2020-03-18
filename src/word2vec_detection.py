@@ -9,7 +9,7 @@ import yaml
 from geometry_msgs.msg import PoseStamped
 from ml_msgs.msg import MarkerDetection
 from utils import cosine_sim, calc_distance, load_vectors
-from knowledge_server.msg import Dataframe 
+from knowledge_msgs.msg import Dataframe 
 from knowledge_server.srv import RegisterObject, RegisterObjectRequest, RegisterObjectResponse
 
 class Word2Vec_Detection:
