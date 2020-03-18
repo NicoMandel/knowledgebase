@@ -6,7 +6,7 @@ import numpy as np
 import math
 import tf2_ros
 import tf2_geometry_msgs
-from knowledge_server.msg import Point2D, PointArray
+from knowledge_msgs.msg import Point2D, PointArray
 from geometry_msgs.msg import PointStamped
 from sensor_msgs.msg import CameraInfo
 
@@ -144,7 +144,8 @@ class CameraTransformVertical:
         self.no_of_pts = rospy.get_param('~no_of_pts', default=50)
         self.pts_frame = rospy.get_param('~pts_frame', default='base_link')
         # Camera Stuff here
-        msg = rospy.wait_for_message("/iris_bottom_cam/usb_cam/camera_info", CameraInfo, timeout=timeout)
+        vehicle_name = rospy.get_param("/vehicle_name",default="iris")
+        msg = rospy.wait_for_message("/{}/usb_cam/camera_info".format(vehicle_name), CameraInfo, timeout=timeout)
         img_height = msg.height
         img_width = msg.width
         self.focal_length = msg.K[0]        # vertical and horizontal fov are mostly the same

@@ -10,9 +10,9 @@ from mavros_msgs.msg import PositionTarget
 from geometry_msgs.msg import PoseStamped
 from ml_msgs.msg import MarkerDetection
 from utils import *
-from knowledge_server.msg import PointArray, Array
+from knowledge_msgs.msg import PointArray, Array
 from copy import deepcopy
-from knowledge_server.msg import Object
+from knowledge_msgs.msg import Object
 from tf2_ros import Buffer, TransformListener, LookupException as lookE, ConnectivityException as ConnE, ExtrapolationException as ExE
 
 
@@ -172,8 +172,6 @@ class Word2Vec_Mapping:
 
     
     
-
-
 if __name__=="__main__":
     rospy.init_node("map_server")
     wvc = Word2Vec_Mapping()

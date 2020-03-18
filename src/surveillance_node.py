@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
-from knowledge_server.msg import Array, PointArray, Object, Dataframe
+from knowledge_msgs.msg import Array, PointArray, Object, Dataframe
 import numpy as np
 from geometry_msgs.msg import PoseStamped
 from utils import truncate_points, cart_to_polar_vec
