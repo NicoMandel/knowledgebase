@@ -137,7 +137,7 @@ class CameraTransformVertical:
     https://photo.stackexchange.com/questions/56596/how-do-i-calculate-the-ground-footprint-of-an-aerial-camera"""
 
     # A camera transform class for the case of a bottom-facing camera
-    def __init__(self, timeout=5):
+    def __init__(self, timeout=None):
         """ A constructor for the bottom facing camera """
 
         self.detection_distance = rospy.get_param('~detection_threshold', default=1.8)
