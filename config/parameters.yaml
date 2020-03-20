@@ -25,3 +25,4 @@ cam_tf:
 navigator:
   distance_threshold: 1.0
   const_height: 1.5
+  file_id: "Initial_WPs.csv"
