@@ -29,8 +29,15 @@ class Word2Vec_navigation:
             self.coord_array = self.getInitialListFromFile(use_file)
             # rospy.logerr("Read target coordinates from file: {}".format(self.coord_array[:10]))
         except IOError:
-            rospy.logerr("no not in use file, ergo generating waypoint sequence")
-            self.coord_array = self.getInitialList()
+            rospy.logerr("No File Found. Using default defined file from ros params")
+            try:
+                use_file = rospy.get_param('~file_id')
+                rospack = rospkg.RosPack()
+                wd = os.path.join(rospack.get_path('knowledge_server'), 'config')
+                self.coord_array = self.getInitialListFromFile(os.path.join(wd, use_file))
+            except KeyError:
+                rospy.logerr("Param not defined. Using initial circular path")
+                self.coord_array = self.getInitialList()
         
         rospy.Subscriber("target",PoseStamped, self.target_callback, queue_size=1)
         rospy.Subscriber("Path", Array, self.path_callback, queue_size = 2)
