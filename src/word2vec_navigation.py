@@ -13,7 +13,7 @@ import sys
 
 import os.path
 import rospkg
-      
+from std_msgs.msg import Bool 
     
 class Word2Vec_navigation:
     """ A navigation class which sends OFFBOARD commands to a UAV. See documentation above """
@@ -38,6 +38,9 @@ class Word2Vec_navigation:
             except KeyError:
                 rospy.logerr("Param not defined. Using initial circular path")
                 self.coord_array = self.getInitialList()
+	
+	# Shutdown publisher
+	self.shutdown_pub = rospy.Publisher(shutdown_topic, Bool, queue_size=5)	
         
         rospy.Subscriber("target",PoseStamped, self.target_callback, queue_size=1)
         rospy.Subscriber("Path", Array, self.path_callback, queue_size = 2)
@@ -94,7 +97,11 @@ class Word2Vec_navigation:
         finalwp.pose.position.z = 0.0
         self.next_wp_pub.publish(finalwp)
         self.local_pos_sub.unregister()
-        
+       
+	# Shutdown hook
+	final_msg = Bool()
+	self.shutdown_pub.publish(final_msg)
+ 
     # A callback on the path topic - which updates the mission path
     def path_callback(self,msg):
         """ A callback which takes an Array msg of new waypoints  """
@@ -174,7 +181,10 @@ class Word2Vec_navigation:
                 self.next_wp_pub.publish(new_target)
                 rate.sleep()
         except IndexError:
-            rospy.logwarn("No further waypoints to explore in list. Remaining in Hover Modes")
+            rospy.logwarn("No further waypoints to explore in list. Shutting Down")
+	    final_msg = Bool()
+	    self.shutdown_publ.publish(final_msg)
+	    
 
     # A method to return a PoseStamped object for two pairs of x, y coordinates
     def getPoseStamped(self, vec_new, vec_old):
