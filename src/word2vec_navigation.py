@@ -18,7 +18,7 @@ from std_msgs.msg import Bool
 class Word2Vec_navigation:
     """ A navigation class which sends OFFBOARD commands to a UAV. See documentation above """
 
-    def __init__(self, use_file):
+    def __init__(self, use_file, shutdown_topic="/shutdown_signal"):
         """ A navigation class"""
         
         self.dist_to_goal = 10000 # high initialisation
