@@ -39,8 +39,8 @@ class Word2Vec_navigation:
                 rospy.logerr("Param not defined. Using initial circular path")
                 self.coord_array = self.getInitialList()
 	
-	# Shutdown publisher
-	self.shutdown_pub = rospy.Publisher(shutdown_topic, Bool, queue_size=5)	
+        # Shutdown publisher
+        self.shutdown_pub = rospy.Publisher(shutdown_topic, Bool, queue_size=5)	
         
         rospy.Subscriber("target",PoseStamped, self.target_callback, queue_size=1)
         rospy.Subscriber("Path", Array, self.path_callback, queue_size = 2)
@@ -98,9 +98,9 @@ class Word2Vec_navigation:
         self.next_wp_pub.publish(finalwp)
         self.local_pos_sub.unregister()
        
-	# Shutdown hook
-	final_msg = Bool()
-	self.shutdown_pub.publish(final_msg)
+        # Shutdown hook
+        final_msg = Bool()
+        self.shutdown_pub.publish(final_msg)
  
     # A callback on the path topic - which updates the mission path
     def path_callback(self,msg):
@@ -182,8 +182,8 @@ class Word2Vec_navigation:
                 rate.sleep()
         except IndexError:
             rospy.logwarn("No further waypoints to explore in list. Shutting Down")
-	    final_msg = Bool()
-	    self.shutdown_publ.publish(final_msg)
+            final_msg = Bool()
+            self.shutdown_pub.publish(final_msg)
 	    
 
     # A method to return a PoseStamped object for two pairs of x, y coordinates
