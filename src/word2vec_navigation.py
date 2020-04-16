@@ -10,6 +10,7 @@ from utils import offset_pt, polar_to_cart, vector_distance
 from tf.transformations import quaternion_from_euler
 import pandas as pd
 import sys
+from std_msgs.msg import Bool
 
 import os.path
 import rospkg
@@ -18,7 +19,7 @@ import rospkg
 class Word2Vec_navigation:
     """ A navigation class which sends OFFBOARD commands to a UAV. See documentation above """
 
-    def __init__(self, use_file):
+    def __init__(self, use_file, shutdown_topic="/shutdown_signal"):
         """ A navigation class"""
         
         self.dist_to_goal = 10000 # high initialisation
@@ -32,6 +33,9 @@ class Word2Vec_navigation:
             rospy.logerr("no not in use file, ergo generating waypoint sequence")
             self.coord_array = self.getInitialList()
         
+        # Shutdown publisher
+        self.shutdown_pub = rospy.Publisher(shutdown_topic, Bool, queue_size=3)
+
         rospy.Subscriber("target",PoseStamped, self.target_callback, queue_size=1)
         rospy.Subscriber("Path", Array, self.path_callback, queue_size = 2)
         self.next_wp_pub = rospy.Publisher("nextWP", PoseStamped, queue_size = 5)
@@ -87,6 +91,10 @@ class Word2Vec_navigation:
         finalwp.pose.position.z = 0.0
         self.next_wp_pub.publish(finalwp)
         self.local_pos_sub.unregister()
+
+        # Shutdown hook
+        final_msg = Bool()
+        self.shutdown_pub.publish(final_msg)
         
     # A callback on the path topic - which updates the mission path
     def path_callback(self,msg):
@@ -167,7 +175,12 @@ class Word2Vec_navigation:
                 self.next_wp_pub.publish(new_target)
                 rate.sleep()
         except IndexError:
-            rospy.logwarn("No further waypoints to explore in list. Remaining in Hover Modes")
+            rospy.logwarn("No further waypoints to explore in list. Shutting Down")
+            # Shutdown signal
+            # Shutdown hook
+            final_msg = Bool()
+            self.shutdown_pub.publish(final_msg)
+
 
     # A method to return a PoseStamped object for two pairs of x, y coordinates
     def getPoseStamped(self, vec_new, vec_old):
